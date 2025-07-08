@@ -32,7 +32,7 @@ GENDER_CHOICES = [
 ]
 
 
-class customer(models.Model):
+class Customer(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     address = models.CharField(max_length=300)
@@ -54,15 +54,15 @@ FREQUENCY_CHOICES = [
     ('ML', 'monthly'),
 ]
 
-class contribution(models.Model):
+class Contribution(models.Model):
     name = models.CharField(help_text="name of saving", max_length=100, default="Mr Something")
-    customer = models.ForeignKey(customer, on_delete=models.CASCADE, max_length=200)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, max_length=200)
     frequency = models.CharField(max_length=200, choices=FREQUENCY_CHOICES, default=DAILY)
     amount = models.IntegerField()
     start_date = models.DateTimeField()
 
     def __str__(self):
-        return self.customer
+        return self.name
 
 
 

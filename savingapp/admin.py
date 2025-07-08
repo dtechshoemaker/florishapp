@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import customer, contribution
+from .models import Customer, Contribution
 
-admin.site.register(customer)
-admin.site.register(contribution)
+admin.site.register(Customer)
+admin.site.register(Contribution)

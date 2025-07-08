@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    This is the dashboard
+    {% for customer in customers %}
+        <h1>{{customer.first_name}}</h1>{{ customer.full_name }}
+    {% endfor %}
+    <!-- {% for customer in customers %}
+        <li>{{ customer.first_name }}</li>
+    {% empty %}
+        <li>No customers found.</li>
+    {% endfor %} -->
+</body>
+</html> 
