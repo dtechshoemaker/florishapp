@@ -42,8 +42,8 @@ class customer(models.Model):
     edited_at = models.DateTimeField()
     created_at = models.DateTimeField()
 
-    def __init__(self):
-        self.first_name
+    def __str__(self):
+        return self.first_name
 
 DAILY = 'DL'
 
@@ -54,14 +54,15 @@ FREQUENCY_CHOICES = [
     ('ML', 'monthly'),
 ]
 
-class contributions(models.Model):
+class contribution(models.Model):
+    name = models.CharField(help_text="name of saving", max_length=100, default="Mr Something")
     customer = models.ForeignKey(customer, on_delete=models.CASCADE, max_length=200)
     frequency = models.CharField(max_length=200, choices=FREQUENCY_CHOICES, default=DAILY)
     amount = models.IntegerField()
     start_date = models.DateTimeField()
 
-    def __init__(self):
-        self.customer
+    def __str__(self):
+        return self.customer
 
 
 
