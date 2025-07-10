@@ -39,8 +39,7 @@ class Customer(models.Model):
     location = models.CharField(max_length=200, choices=LOCATION_CHOICES, default=AGBOLI)
     gender = models.CharField(max_length=100, choices=GENDER_CHOICES)
     business = models.CharField(max_length=200)
-    edited_at = models.DateTimeField()
-    created_at = models.DateTimeField()
+
 
     def __str__(self):
         return self.first_name
