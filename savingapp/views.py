@@ -7,5 +7,10 @@ def dashboard(request):
 
 
 def customers(request):
-    return render(request, 'customers.html')
+    customers = Customer.objects.all()
+
+    context = {
+        'customers': customers
+    }
+    return render(request, 'customers.html', context)
 

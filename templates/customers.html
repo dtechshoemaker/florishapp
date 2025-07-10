@@ -6,7 +6,12 @@
 <p class="text-muted">Manage customer details and savings records</p>
 
 <input type="text" class="form-control mb-3" placeholder="Search by name, ID, or phone number" />
-
+<div class="overlay" id="popupOverlay">
+    <div class="popup">
+        <h3>Hello there</h3>
+        <button type="button" onclick="closePopup()" class="btn btn-primary">close</button>
+    </div>
+</div>
 <table class="table table-hover">
     <thead>
         <tr>
@@ -26,7 +31,7 @@
         <td>+1 (555) 123-4567</td>
         <td>sophia.carter@email.com</td>
         <td><span class="badge bg-success">Active</span></td>
-        <td><a href="#" class="text-primary">View</a></td>
+        <td><button type="button" class="btn btn-primary" onclick="showPopup()">view</button></td>
         </tr>
     </tbody>
   {% endfor %}
