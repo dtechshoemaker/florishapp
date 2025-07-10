@@ -19,10 +19,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False') == 'False'
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 
-ALLOWED_HOSTS = ['florishapp.onrender.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -123,8 +123,3 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Optional: Enable CORS so Bubble can send requests
-# INSTALLED_APPS += ['corsheaders']
-# MIDDLEWARE = ['corsheaders.middleware.CorsMiddleware'] + MIDDLEWARE
-# CORS_ALLOW_ALL_ORIGINS = True

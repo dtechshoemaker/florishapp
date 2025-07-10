@@ -44,8 +44,8 @@ class Customer(models.Model):
     def __str__(self):
         return self.first_name
 
-DAILY = 'DL'
 
+DAILY = 'DL'
 
 FREQUENCY_CHOICES = [
     ('DL', 'daily'),

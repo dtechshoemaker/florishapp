@@ -1,16 +1,30 @@
-*{
-    margin: none;
-    padding: none;
+body {
+  background-color: #f8fafc;
+}
+.sidebar {
+  min-height: 100vh;
+  background-color: #0e627b;
+  padding: 1.5rem;
 }
 
-.navpoint {
-    display: flex;
-    flex-direction: column !important;
+.textColor{
+  color: #f1f5f9;
 }
 
-.navpoint .point {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
+.sidebar a.nav-link.active {
+  background-color: #4298b1;
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+
+.sidebar .nav-link:hover {
+  color: rgb(255, 215, 166);
+}
+
+
+.content {
+  padding: 2rem;
+}
+.table thead {
+  background-color: #a0c3e6;
 }

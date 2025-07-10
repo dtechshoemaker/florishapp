@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from .models import Customer
-from rest_framework import generics
-from .models import Customer
-from .serializers import CustomerSerializer
 
-class CustomerListCreateView(generics.ListCreateAPIView):
-    queryset = Customer.objects.all()
-    serializer_class = CustomerSerializer
+def dashboard(request):
+    customers = Customer.objects.all()
+    return render(request, 'dashboard.html', {'customers':customers})
 
+
+def customers(request):
+    return render(request, 'customers.html')
 
