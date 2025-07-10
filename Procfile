@@ -1,1 +1,1 @@
-web: gunicorn florishsavings.wsgi
+gunicorn florishsavings.wsgi
