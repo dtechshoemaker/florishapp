@@ -1,19 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    This is the dashboard
-    {% for customer in customers %}
-        <h1>{{customer.first_name}}</h1>{{ customer.full_name }}
-    {% endfor %}
-    <!-- {% for customer in customers %}
-        <li>{{ customer.first_name }}</li>
-    {% empty %}
-        <li>No customers found.</li>
-    {% endfor %} -->
-</body>
-</html> 
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div>
+    <div class="logo">
+        <a class="navbar-brand" href="#">
+            <h1>Florish App</h1>
+        </a>
+    </div>
+    <div class="row">
+        <div class="col-3 navpoint">
+            <div class="point">
+                <i class="fa-solid fa-house"></i>
+                <h3 class="header-h3">Dashboard</h3>
+            </div>
+            <div class="point">
+                <i class="fa-solid fa-house"></i>
+                <h3 class="header-h3">Dashboard</h3>
+            </div>
+            <div class="point">
+                <i class="fa-solid fa-house"></i>
+                <h3 class="header-h3">Dashboard</h3>
+            </div>
+            <div class="point">
+                <i class="fa-solid fa-house"></i>
+                <h3 class="header-h3">Dashboard</h3>
+            </div>
+        </div>
+        <div class="col-9">
+            <h3 class="header-h3">Section B</h3>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

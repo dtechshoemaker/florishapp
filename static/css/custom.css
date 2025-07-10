@@ -1,0 +1,16 @@
+*{
+    margin: none;
+    padding: none;
+}
+
+.navpoint {
+    display: flex;
+    flex-direction: column !important;
+}
+
+.navpoint .point {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}

@@ -1,7 +1,7 @@
 from django.urls import path
 
-from . import views
+from .views import CustomerListCreateView
 
 urlpatterns = [
-    path('', views.dashboard, name='dashboard')
+    path('', CustomerListCreateView.as_view(), name='customer-create'),
 ]
