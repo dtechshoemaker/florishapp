@@ -22,7 +22,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'False'
 
 
-ALLOWED_HOSTS = ['https://florishapp.onrender.com/']
+ALLOWED_HOSTS = ['.onrender.com']
 
 
 # Application definition
