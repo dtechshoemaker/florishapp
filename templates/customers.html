@@ -3,22 +3,22 @@
 {% block title %}Customers{% endblock %}
 {% block content %}
 
-<h2>Customer Profile</h2>
-<p class="text-muted">Manage customer details and savings records</p>
-<div class="d-flex flex-row gap-3">
-  <input type="text" class="form-control mb-3" placeholder="Search by name, ID, or phone number" />
-  <button type="submit" class="btn btn-primary col-2 h-1"><a href="{% url 'customers:create-customer' %}" class="text-white">Add Customer</a></button>
+<h2 class="tw-text-2xl tw-font-bold tw-mb-4">Customer Profile</h2>
+<p class="text-muted tw-mb-6">Manage customer details and savings records</p>
+<div class="d-flex flex-row col-6 gap-3 align-item-center justify-content-center tw-mb-8">
+  <input type="text" class="form-control mb-3 tw-rounded-md" placeholder="Search by name, ID, or phone number" />
+  <a href="{% url 'customers:create-customer' %}" class="align-self-center"><button type="submit" class="btn btn-primary mt-3 tw-shadow-sm">Add</button></a>
 </div>
 
-<table class="table table-hover">
-    <thead>
+<table class="table table-hover tw-shadow-md tw-rounded-lg tw-overflow-hidden">
+    <thead class="tw-bg-gray-100">
         <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Location</th>
-        <th>Business</th>
-        <th>Status</th>
-        <th>Actions</th>
+        <th class="tw-py-3">First name</th>
+        <th class="tw-py-3">Last name</th>
+        <th class="tw-py-3">Location</th>
+        <th class="tw-py-3">Business</th>
+        <th class="tw-py-3">Status</th>
+        <th class="tw-py-3">Actions</th>
         </tr>
     </thead>
   {% for customer in customers %}
@@ -29,9 +29,20 @@
         <td>{{customer.location}}</td>
         <td>{{customer.business}}</td>
         <td><span class="badge bg-success">Active</span></td>
-        <td><button type="button" class="btn btn-primary"><a href="{% url 'customers:customer_details' pk=customer.pk %}" class="link">View</a></button></td>
+        <td>
+          <button type="button" class="btn btn-primary"><a class="text-white text-decoration-none" href="{% url 'customers:customer_details' pk=customer.pk %}">View</a></button>
+        </td>
         </tr>
     </tbody>
   {% endfor %}
 </table>
+<nav aria-label="Page navigation example" class="d-flex justify-content-center">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
 {% endblock %}

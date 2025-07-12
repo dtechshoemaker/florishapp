@@ -7,6 +7,22 @@ body {
   padding: 1.5rem;
 }
 
+.sidebar h5 i {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .textColor{
   color: #f1f5f9;
 }
@@ -19,6 +35,16 @@ body {
 
 .sidebar .nav-link:hover {
   color: rgb(255, 215, 166);
+}
+
+.sidebar .nav-link i {
+  width: 20px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.sidebar .nav-link:hover i {
+  transform: translateX(2px);
 }
 
 

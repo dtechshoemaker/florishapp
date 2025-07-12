@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles that extend Tailwind */
+@layer components {
+  /* These classes don't need the tw- prefix as they're custom components */
+  .sidebar {
+    @apply tw-bg-primary tw-min-h-screen tw-p-6;
+  }
+  
+  .overlay {
+    @apply tw-hidden tw-fixed tw-inset-0 tw-bg-black tw-bg-opacity-60 tw-z-50;
+  }
+  
+  .popup {
+    @apply tw-bg-white tw-w-[200px] tw-h-[200px] tw-rounded-2xl tw-absolute tw-top-1/2 tw-left-1/2 tw-transform tw--translate-x-1/2 tw--translate-y-1/2;
+  }
+}

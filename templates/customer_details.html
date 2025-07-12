@@ -1,5 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {{customer.first_name}}
+    <h2 class="tw-text-2xl tw-font-bold tw-mb-4">Customer's Details</h2>
+    <p class="tw-mb-6">All about a customer</p>
+    <div class="container d-flex flex-row tw-bg-gray-50 tw-rounded-lg tw-overflow-hidden">
+        <div class="container flex-row">
+        <div class="d-flex justify-content-between flex-column gap-5 border-top border-bottom py-2 tw-hover:tw-bg-gray-100">
+            <div class="left">
+                <h5 class="fs-6 tw-font-semibold">Name</h5>
+                <p class="tw-text-gray-700">{{customer.first_name}} {{customer.last_name}}</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between flex-column gap-5 border-top border-bottom py-2">
+            <div class="left">
+                <h5 class="fs-6">Name</h5>
+                <p>{{customer.first_name}} {{customer.last_name}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="container flex-row">
+        <div class="d-flex justify-content-between flex-column gap-5 border-top border-bottom py-2">
+            <div class="left">
+                <h5 class="fs-6">Name</h5>
+                <p>{{customer.first_name}} {{customer.last_name}}</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between flex-column gap-5 border-top border-bottom py-2">
+            <div class="left">
+                <h5 class="fs-6">Name</h5>
+                <p>{{customer.first_name}} {{customer.last_name}}</p>
+            </div>
+        </div>
+    </div>
+    </div>
 {% endblock %}

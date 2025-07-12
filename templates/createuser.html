@@ -4,4 +4,9 @@
 {% block content %}
     <h2>Create User</h2>
     <p>Welcome to Thrift Savings dashboard!</p>
+    <form method="post" class="form col-6">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary mt-3">Add Customer</button>
+    </form>
 {% endblock %}
