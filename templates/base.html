@@ -23,8 +23,8 @@
             <div class="col-md-3 col-lg-2 sidebar">
                 <h5 class="mb-4 fs-3 textColor">Flourish App</h5>
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
-                    <a class="nav-link textColor fs-6 {% if request.path == '/dashboard/' %}active{% endif %}" href="{% url 'dashboard' %}">Dashboard</a>
-                    <a class="nav-link textColor fs-6 {% if request.path == '/customers/' %}active{% endif %}" href="{% url 'customers' %}">Customers</a>
+                    <a class="nav-link textColor fs-6 {% if request.path == '/dashboard/' %}active{% endif %}" href="{% url 'customers:dashboard' %}">Dashboard</a>
+                    <a class="nav-link textColor fs-6 {% if request.path == '/customers/' %}active{% endif %}" href="{% url 'customers:customers' %}">Customers</a>
                     <a class="nav-link textColor fs-6" href="#">Transactions</a>
                     <a class="nav-link textColor fs-6" href="#">Reports</a>
                     <a class="nav-link textColor fs-6" href="#">Settings</a>

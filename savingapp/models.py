@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+
 
 AGBOLI = 'AG'
 BIG_CHURCH = 'BC'
@@ -20,10 +22,10 @@ AGUDAMA = 'AGU'
 
 LOCATION_CHOICES = [
     ('AGBOLI', 'agboli'),
-    ('BIG_CHURCH', 'big_church'),
-    ('SMART_ROAD', 'smart_road'),
-    ('DO_GOOD', 'do_good'),
-    ('FIKO_ROAD', 'fiko_road'),
+    ('BIG CHURCH', 'big_church'),
+    ('SMART ROAD', 'smart_road'),
+    ('DO GOOD', 'do_good'),
+    ('FIKO ROAD', 'fiko_road'),
 ]
 
 GENDER_CHOICES = [
@@ -39,6 +41,7 @@ class Customer(models.Model):
     location = models.CharField(max_length=200, choices=LOCATION_CHOICES, default=AGBOLI)
     gender = models.CharField(max_length=100, choices=GENDER_CHOICES)
     business = models.CharField(max_length=200)
+    create_at = models.DateTimeField(default=timezone.now)
 
 
     def __str__(self):
@@ -58,7 +61,7 @@ class Contribution(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, max_length=200)
     frequency = models.CharField(max_length=200, choices=FREQUENCY_CHOICES, default=DAILY)
     amount = models.IntegerField()
-    start_date = models.DateTimeField()
+    start_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.name

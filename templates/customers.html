@@ -1,24 +1,22 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Customers{% endblock %}
 {% block content %}
 
 <h2>Customer Profile</h2>
 <p class="text-muted">Manage customer details and savings records</p>
-
-<input type="text" class="form-control mb-3" placeholder="Search by name, ID, or phone number" />
-<div class="overlay" id="popupOverlay">
-    <div class="popup">
-        <h3>Hello there</h3>
-        <button type="button" onclick="closePopup()" class="btn btn-primary">close</button>
-    </div>
+<div class="d-flex flex-row gap-3">
+  <input type="text" class="form-control mb-3" placeholder="Search by name, ID, or phone number" />
+  <button type="submit" class="btn btn-primary col-2 h-1"><a href="{% url 'customers:create-customer' %}" class="text-white">Add Customer</a></button>
 </div>
+
 <table class="table table-hover">
     <thead>
         <tr>
-        <th>Name</th>
-        <th>ID</th>
-        <th>Phone</th>
-        <th>Email</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Location</th>
+        <th>Business</th>
         <th>Status</th>
         <th>Actions</th>
         </tr>
@@ -27,11 +25,11 @@
     <tbody>
         <tr>
         <td>{{customer.first_name}}</td>
-        <td>CUST001</td>
-        <td>+1 (555) 123-4567</td>
-        <td>sophia.carter@email.com</td>
+        <td>{{customer.last_name}}</td>
+        <td>{{customer.location}}</td>
+        <td>{{customer.business}}</td>
         <td><span class="badge bg-success">Active</span></td>
-        <td><button type="button" class="btn btn-primary" onclick="showPopup()">view</button></td>
+        <td><button type="button" class="btn btn-primary"><a href="{% url 'customers:customer_details' pk=customer.pk %}" class="link">View</a></button></td>
         </tr>
     </tbody>
   {% endfor %}
