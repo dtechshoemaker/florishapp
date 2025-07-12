@@ -1,8 +1,9 @@
-from django.shortcuts import render,get_object_or_404, redirect
+from django.shortcuts import render,get_object_or_404
 
-from django.http import HttpResponse
 from .models import Customer
 from .forms import CreateForm
+from django.core.paginator import Paginator
+
 
 def dashboard(request):
     customers = Customer.objects.all()
@@ -14,8 +15,11 @@ def customers(request):
 
     paginator = Paginator(all_customers, 10)
 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'customers': all_customers
+        'page_obj': page_obj
     }
     return render(request, 'customers.html', context)
 
