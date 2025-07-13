@@ -5,11 +5,11 @@
     {% for error in form.first_name.errors %}
        <div class="error-text">{{ error }}</div>
     {% endfor %}
-    <h2>Create User</h2>
+    <h2>Edit User</h2>
     <p>Welcome to Thrift Savings dashboard!</p>
     <form method="post" class="form col-6">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit" class="btn btn-primary mt-3">Add Customer</button>
+        <button type="submit" class="btn btn-primary mt-3">Update Customer</button>
     </form>
 {% endblock %}

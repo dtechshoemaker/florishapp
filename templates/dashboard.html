@@ -20,4 +20,12 @@
             <p class="fs-4 fw-bold">${{ total_customers }}</p>
         </div>
     </div>
+
+    <div class="pt-5">
+        <h4>Quick Action</h4>
+        <div class="d-flex flex-row gap-3">
+            <a href="{% url 'customers:create-customer' %}"><button type="submit" class="btn btn-primary py-2">Add New Customer</button></a>
+            <a href="{% url 'customers:customers' %}"><button type="submit" class="btn btn-secondary py-2">View All Customers</button></a>
+        </div>
+    </div>
 {% endblock %}

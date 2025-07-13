@@ -13,24 +13,28 @@
         </div>
         <div class="d-flex justify-content-between flex-column gap-5 border-top border-bottom py-2">
             <div class="left">
-                <h5 class="fs-6">Name</h5>
-                <p>{{customer.first_name}} {{customer.last_name}}</p>
+                <h5 class="fs-6">Location</h5>
+                <p>{{customer.location}}</p>
             </div>
         </div>
     </div>
     <div class="container flex-row">
         <div class="d-flex justify-content-between flex-column gap-5 border-top border-bottom py-2">
             <div class="left">
-                <h5 class="fs-6">Name</h5>
-                <p>{{customer.first_name}} {{customer.last_name}}</p>
+                <h5 class="fs-6">Address</h5>
+                <p>{{customer.address}}</p>
             </div>
         </div>
         <div class="d-flex justify-content-between flex-column gap-5 border-top border-bottom py-2">
             <div class="left">
-                <h5 class="fs-6">Name</h5>
-                <p>{{customer.first_name}} {{customer.last_name}}</p>
+                <h5 class="fs-6">Business Type</h5>
+                <p>{{customer.business}}</p>
             </div>
         </div>
     </div>
+    </div>
+    <div class="d-flex flex-row gap-3">
+        <a href="{% url 'customers:edit-customer' customer.id %}"><button type="submit" class="btn btn-primary py-2">Edit Customer</button></a>
+        <a href="{% url 'customers:delete-customer' customer.id %}"><button type="submit" class="btn btn-danger py-2">Delete Customer</button></a>
     </div>
 {% endblock %}

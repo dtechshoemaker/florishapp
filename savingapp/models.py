@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django.core.exceptions import ValidationError
+
 
 
 AGBOLI = 'AG'
@@ -43,9 +45,12 @@ class Customer(models.Model):
     business = models.CharField(max_length=200)
     create_at = models.DateTimeField(default=timezone.now)
 
-
     def __str__(self):
         return self.first_name
+
+    def clean(self):
+        if Customer.objects.filter(first_name=self.first_name, last_name=self.last_name).exists():
+            raise ValidationError("Customer with the same first name and last name already exists.")
 
 
 DAILY = 'DL'
@@ -69,7 +74,7 @@ class SavingPlan(models.Model):
 
 class CustomerSaving(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='savings')
-    saving_plan = models.ForeignKey(SavingPlan, on_delete=models.CASCADE)
+    saving_plan = models.ForeignKey(SavingPlan, on_delete=models.CASCADE, blank="True", null="none",)
     is_active = models.BooleanField(default=True)
     total_contributed = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -82,13 +87,21 @@ Contribution is the daily payment by the user which will be used for the tabke
 for the user
 """
 class Contribution(models.Model):
-    customer_saving = models.ForeignKey(CustomerSaving, on_delete=models.CASCADE, related_name='contributions')
-    payment_date = models.DateField()
-    amount_paid = models.DecimalField(max_digits=10, decimal_places=2)
-    created_at = models.DateTimeField(auto_now_add=True)
+    customer_saving = models.ForeignKey(
+        CustomerSaving,
+        null=True,  # allow saving without this value (optional)
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name='contributions'
+    )
+    payment_date = models.DateField(default=timezone.now)
+    amount_paid = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f"{self.customer_saving.customer.full_name} - {self.payment_date}"
+        if self.customer_saving and self.customer_saving.customer:
+            return f"{self.customer_saving.customer.full_name} - {self.payment_date}"
+        return f"Unknown Customer - {self.payment_date}"
 
 
 

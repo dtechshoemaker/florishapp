@@ -80,3 +80,7 @@ body {
 .popup button{
   margin-top: 20px;
 }
+
+.error-text {
+  background-color: red;
+}

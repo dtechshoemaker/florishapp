@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import redirect, render,get_object_or_404
 
 from .models import Customer
 from .forms import CreateForm
@@ -42,6 +42,7 @@ def createuser(request):
         form = CreateForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('customers:customers')           
     else:
         form = CreateForm()
     return render(request, 'createuser.html', {'form': form})
@@ -59,12 +60,34 @@ def search_customers(request):
             )
     else: 
         results = []
-
-
     context = {
         'query':query,
         'results': results
     }
     return render(request, 'search_customer.html', context)
+
+
+def edit_customer(request, pk):
+    customer = get_object_or_404(Customer, id=pk)
+    if request.method == 'GET':
+        context = {'form': CreateForm(instance=customer), 'id':id}
+        return render(request, 'editcustomer.html', context)
+
+    elif request.method == 'POST':
+        form = CreateForm(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+            return redirect('customers:customer_details', pk=customer.pk)
+        else:
+            # messages.error(request, 'Please correct the following errors:')
+            return render(request, 'editcustomer.html', {'form':form})
+    
+def delete_customer(request, pk):
+    customer = get_object_or_404(Customer, pk=pk)
+    if request.method == 'POST':
+        customer.delete()
+        return redirect('customers:customers')
+    return render(request, 'confirm_delete.html', {'customer': customer})
+
 
 
