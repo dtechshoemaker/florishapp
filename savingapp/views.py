@@ -7,13 +7,19 @@ from django.core.paginator import Paginator
 
 def dashboard(request):
     customers = Customer.objects.all()
-    return render(request, 'dashboard.html', {'customers':customers})
+    total_customers = Customer.objects.count()
+
+    context = {
+        'customers': customers,
+        'total_customers': total_customers,
+    }
+    return render(request, 'dashboard.html', context)
 
 
 def customers(request):
     all_customers  = Customer.objects.all()
 
-    paginator = Paginator(all_customers, 10)
+    paginator = Paginator(all_customers, 8)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)

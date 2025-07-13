@@ -2,6 +2,22 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-    <h2>Dashboard</h2>
-    <p>Welcome to Thrift Savings dashboard!</p>
+    <div class="title">
+        <h2>Dashboard</h2>
+        <p>Welcome to Thrift Savings dashboard!</p>
+    </div>
+    <div class="container d-flex flex-row gap-3">
+        <div class="card px-4 py-2 col-4 gap-0">
+            <p class="fs-6">Total Customers</p>
+            <p class="fs-4 fw-bold">{{ total_customers }}</p>
+        </div>
+        <div class="card px-4 py-2 col-4 gap-0">
+            <p class="fs-6">Active Saving Account</p>
+            <p class="fs-4 fw-bold">{{ total_customers }}</p>
+        </div>
+        <div class="card px-4 py-2 col-4 gap-0">
+            <p class="fs-6">Total Saving</p>
+            <p class="fs-4 fw-bold">${{ total_customers }}</p>
+        </div>
+    </div>
 {% endblock %}
