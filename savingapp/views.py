@@ -3,6 +3,7 @@ from django.shortcuts import render,get_object_or_404
 from .models import Customer
 from .forms import CreateForm
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 def dashboard(request):
@@ -44,5 +45,26 @@ def createuser(request):
     else:
         form = CreateForm()
     return render(request, 'createuser.html', {'form': form})
+
+
+def search_customers(request):
+    query = request.GET.get('q', '')   #get the search term from the query
+    if query:
+        results = Customer.objects.filter(
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query) |
+            Q(location__icontains=query) |
+            Q(gender__icontains=query) |
+            Q(business__icontains=query)
+            )
+    else: 
+        results = []
+
+
+    context = {
+        'query':query,
+        'results': results
+    }
+    return render(request, 'search_customer.html', context)
 
 

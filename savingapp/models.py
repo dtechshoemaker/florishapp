@@ -56,16 +56,6 @@ FREQUENCY_CHOICES = [
     ('ML', 'monthly'),
 ]
 
-class Contribution(models.Model):
-    name = models.CharField(help_text="name of saving", max_length=100, default="Mr Something")
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, max_length=200)
-    frequency = models.CharField(max_length=200, choices=FREQUENCY_CHOICES, default=DAILY)
-    amount = models.IntegerField()
-    start_date = models.DateTimeField(default=timezone.now)
-
-    def __str__(self):
-        return self.name
-
 class SavingPlan(models.Model):
     name = models.CharField(max_length=100)
     amount_per_day = models.DecimalField(max_digits=10, decimal_places=2)
@@ -87,7 +77,10 @@ class CustomerSaving(models.Model):
     def __str__(self):
         return f"{self.customer.full_name} - {self.saving_plan.name}"
 
-
+"""
+Contribution is the daily payment by the user which will be used for the tabke
+for the user
+"""
 class Contribution(models.Model):
     customer_saving = models.ForeignKey(CustomerSaving, on_delete=models.CASCADE, related_name='contributions')
     payment_date = models.DateField()
