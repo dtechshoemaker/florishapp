@@ -1,5 +1,6 @@
 from django.db import models
 from savingapp.models import Customer
+from django.utils import timezone
 
 class SavingPlan(models.Model):
     name = models.CharField(max_length=100)

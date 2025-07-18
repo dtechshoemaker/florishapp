@@ -5,8 +5,8 @@ from .models import Contribution, SavingPlan, CustomerSaving
 
 class SavingPlanForm(forms.ModelForm):
     class Meta:
-        Models = SavingPlan
-        fields = '__all__'
+        model = SavingPlan
+        fields = ['name', 'amount_per_day', 'duration_in_days', 'start_date', 'end_date']
 
         widgets = {
             'name': widgets.TextInput(attrs={'class': 'form-control'}),

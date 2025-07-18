@@ -53,7 +53,7 @@
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
                     <a class="nav-link textColor fs-6 {% if request.path == '/dashboard/' %}active{% endif %}" href="{% url 'customers:dashboard' %}"><i class="fas fa-tachometer-alt tw-mr-2"></i> Dashboard</a>
                     <a class="nav-link textColor fs-6 {% if request.path == '/customers/' %}active{% endif %}" href="{% url 'customers:customers' %}"><i class="fas fa-users tw-mr-2"></i> Customers</a>
-                    <a class="nav-link textColor fs-6 {% if request.path == '/savings/' %}active{% endif %}" href="{% url 'savings:customersavings' %}"><i class="fas fa-exchange-alt tw-mr-2"></i>Savings</a>
+                    <a class="nav-link textColor fs-6 {% if request.path == '/savings/' %}active{% endif %}" href="{% url 'savingsplan:customersavings' %}"><i class="fas fa-exchange-alt tw-mr-2"></i>Savings</a>
                     <a class="nav-link textColor fs-6" href="#"><i class="fas fa-exchange-alt tw-mr-2"></i> Transactions</a>
                     <a class="nav-link textColor fs-6" href="#"><i class="fas fa-chart-bar tw-mr-2"></i> Reports</a>
                     <a class="nav-link textColor fs-6" href="#"><i class="fas fa-cog tw-mr-2"></i> Settings</a>

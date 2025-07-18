@@ -6,8 +6,9 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('savingapp.urls'))
+    path('', include('savingapp.urls', namespace="customers")),
+    path('savings', include('savingplan.urls', namespace="saving"))
 ]
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)

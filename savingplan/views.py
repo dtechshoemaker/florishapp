@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 
-from forms import CUst, SavingPlanForm
+from .forms import SavingPlanForm
 
 # Create your views here.
 
@@ -16,4 +16,4 @@ def CustomerSaving(request):
         context = {
             'form': form
         }
-    return render(request, 'savings/customersavings.html', context)
+    return render(request, './savings/customersavings.html', context)
