@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h3>{{ customer.full_name }} — Savings Activity (Last 30 Days)</h3>
+  <p><strong>Plan:</strong> {{ saving.saving_plan.name }} | <strong>Amount per Day:</strong> ₦{{ saving.saving_plan.amount_per_day }}</p>
+
+  {% if error %}
+    <div class="alert alert-warning">{{ error }}</div>
+  {% else %}
+    <table class="table table-bordered mt-4">
+      <thead class="table-light">
+        <tr>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Amount Paid</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in records %}
+          <tr>
+            <td>{{ r.date }}</td>
+            <td>
+              {% if r.paid %}
+                <span class="badge bg-success">Paid</span>
+              {% else %}
+                <span class="badge bg-danger">Missed</span>
+              {% endif %}
+            </td>
+            <td>₦{{ r.amount }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr class="table-info">
+          <td colspan="2"><strong>Total Contributed</strong></td>
+          <td>₦{{ total_paid }}</td>
+        </tr>
+        <tr class="table-warning">
+          <td colspan="2"><strong>Missed Days</strong></td>
+          <td>{{ missed_days }} days</td>
+        </tr>
+        <tr class="table-success">
+          <td colspan="2"><strong>Contribution Rate</strong></td>
+          <td>{{ rate }}%</td>
+        </tr>
+      </tfoot>
+    </table>
+  {% endif %}
+</div>
+{% endblock %}
