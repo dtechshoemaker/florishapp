@@ -3,5 +3,41 @@
 {% block content %}
 
     <h1>Customer Savings</h1>
+    <a href="{% url 'savingsplan:createplan' %}">Create Savings Plan</a>
+    <div class="container">
+<div class="container">
+  <h2 class="mb-4">Customers with Savings Plans</h2>
+
+  {% if customers %}
+    <table class="table table-hover table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Saving Plan</th>
+          <th>Start Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for customer in customers %}
+          <tr>
+            <td>{{ customer.full_name }}</td>
+            <td>{{ customer.phone_number }}</td>
+            <td>{{ customer.saving.saving_plan.name }}</td>
+            <td>{{ customer.saving.saving_plan.start_date }}</td>
+            <td>
+              <a href="{% url 'customer_saving_detail' customer.id %}" class="btn btn-sm btn-primary">
+                View Activity
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="alert alert-info">No customers found.</div>
+  {% endif %}
+</div>
 
 {% endblock %}

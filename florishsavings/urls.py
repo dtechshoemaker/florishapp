@@ -7,7 +7,7 @@ from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('savingapp.urls', namespace="customers")),
-    path('savings', include('savingplan.urls', namespace="saving"))
+    path('savings/', include('savingplan.urls', namespace="savingplan")),
 ]
 
 if settings.DEBUG:

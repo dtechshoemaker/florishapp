@@ -12,6 +12,6 @@ class SavingPlanForm(forms.ModelForm):
             'name': widgets.TextInput(attrs={'class': 'form-control'}),
             'amount_per_day': widgets.NumberInput(attrs={'class': 'form-control'}),
             'duration_in_days': widgets.NumberInput(attrs={'class': 'form-control'}),
-            'start_date': widgets.DateInput(attrs={'class': 'form-control'}),
-            'end_date': widgets.DateInput(attrs={'class': 'form-control'}),
+            'start_date': widgets.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'end_date': widgets.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
         }
