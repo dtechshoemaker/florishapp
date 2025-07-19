@@ -1,44 +1,41 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <h1>Customer Savings</h1>
-    <a href="{% url 'savingsplan:createplan' %}">Create Savings Plan</a>
-    <div class="container">
 <div class="container">
-  <h2 class="mb-4">Customers with Savings Plans</h2>
-  <a href="{% url 'savingsplan:createcustomersaving' %}" class="btn btn-primary mb-3">Create Customer Saving</a>
-
-  {% if customers %}
-    <table class="table table-hover table-bordered">
-      <thead class="table-light">
-        <tr>
-          <th>Name</th>
-          <th>Phone</th>
-          <th>Saving Plan</th>
-          <th>Start Date</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for customer in customers %}
-          <tr>
-            <td>{{ customer.full_name }}</td>
-            <td>{{ customer.phone_number }}</td>
-            <td>{{ customer.saving.saving_plan.name }}</td>
-            <td>{{ customer.saving.saving_plan.start_date }}</td>
-            <td>
-              <a href="{% url 'savingsplan:customer_saving_details' customer.id %}" class="btn btn-sm btn-primary">
-                View Activity
-              </a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  {% else %}
-    <div class="alert alert-info">No customers found.</div>
-  {% endif %}
+    <div class="container">
+    <h2 class="mb-4">Customers with Savings Plans</h2>
+    <a href="{% url 'savingsplan:createcustomersaving' %}" class="btn btn-primary mb-3">Create Customer Saving</a>
+    <a href="{% url 'savingsplan:createplan' %}" class="btn btn-secondary mb-3">Create Saving Plan</a>
+        {% if customers %}
+            <table class="table table-hover table-bordered">
+            <thead class="table-light">
+                <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Saving Plan</th>
+                <th>Start Date</th>
+                <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.first_name }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td>{{ customer.saving.saving_plan.name }}</td>
+                    <td>{{ customer.saving.saving_plan.start_date }}</td>
+                    <td>
+                    <a href="{% url 'savingsplan:customer_saving_details' customer.id %}" class="btn btn-sm btn-primary">
+                        View Activity
+                    </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-info">No customers found.</div>
+        {% endif %}
 </div>
 
 {% endblock %}

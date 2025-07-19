@@ -19,6 +19,7 @@
         <th class="tw-py-3">Last name</th>
         <th class="tw-py-3">Location</th>
         <th class="tw-py-3">Business</th>
+        <th class="tw-py-3">Saving Plan</th>
         <th class="tw-py-3">Status</th>
         <th class="tw-py-3">Actions</th>
         </tr>
@@ -30,6 +31,13 @@
         <td>{{customer.last_name}}</td>
         <td>{{customer.location}}</td>
         <td>{{customer.business}}</td>
+        <td>
+            {% for saving in customer.savings.all %}
+                {{ saving.saving_plan.name }}{% if not forloop.last %}, {% endif %}
+            {% empty %}
+                No active plan
+            {% endfor %}
+        </td>
         <td><span class="badge bg-success">Active</span></td>
         <td>
           <button type="button" class="btn btn-primary"><a class="text-white text-decoration-none" href="{% url 'customers:customer_details' pk=customer.pk %}">View</a></button>

@@ -3,7 +3,6 @@ from django.utils import timezone
 from django.core.exceptions import ValidationError
 
 
-
 AGBOLI = 'AG'
 BIG_CHURCH = 'BC'
 SMART_ROAD = 'SR'
@@ -39,6 +38,7 @@ GENDER_CHOICES = [
 class Customer(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
+    phone = models.CharField(max_length=200, default="none", blank=True, null=True)
     address = models.CharField(max_length=300)
     location = models.CharField(max_length=200, choices=LOCATION_CHOICES, default=AGBOLI)
     gender = models.CharField(max_length=100, choices=GENDER_CHOICES)

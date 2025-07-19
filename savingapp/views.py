@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render,get_object_or_404
 
 from .models import Customer
+from savingplan.models import SavingPlan, CustomerSaving
 from .forms import CreateForm
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -8,6 +9,7 @@ from django.db.models import Q
 
 def dashboard(request):
     customers = Customer.objects.all()
+
     total_customers = Customer.objects.count()
 
     context = {
@@ -19,21 +21,26 @@ def dashboard(request):
 
 def customers(request):
     all_customers  = Customer.objects.all()
-
+    customer_plan = SavingPlan.objects.all()
+    customers_saving = CustomerSaving.objects.all()
     paginator = Paginator(all_customers, 8)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     context = {
-        'page_obj': page_obj
+        'page_obj': page_obj,
+        'customer_plan': customer_plan,
+        'customers_saving': customers_saving,
     }
     return render(request, 'customers.html', context)
 
 def customer_details(request, pk):
     customer = get_object_or_404(Customer, id=pk)
     context = {
-        'customer': customer
+        'customer': customer,
+        'customer_plan': customer_plan,
+        'customers_saving': customers_saving,
     }
     return render(request, 'customer_details.html', context)
 

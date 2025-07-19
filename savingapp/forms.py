@@ -4,12 +4,17 @@ from .models import Customer
 class CreateForm(forms.ModelForm):
     class Meta:
         model = Customer
-        fields = ['first_name', 'last_name', 'location', 'gender', 'business']
+        fields = ['first_name', 'last_name', 'location', 'address', 'phone', 'gender', 'business']
+
 
         widgets = {
             'first_name': forms.TextInput(attrs={
                 'class': 'form-control py-3',
                 'placeholder': 'First Name Here...'
+            }),
+            'phone': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Phone number here...'
             }),
             'last_name': forms.TextInput(attrs={
                 'class': 'form-control',
@@ -17,6 +22,10 @@ class CreateForm(forms.ModelForm):
             }),
             'location': forms.Select(attrs={
                 'class': 'form-control'
+            }),
+            'address': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Address here...'
             }),
             'gender': forms.Select(attrs={
                 'class': 'form-control'
